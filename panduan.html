@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panduan Aplikasi Absensi Siswa Online - SMPN 13 Bandar Lampung</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --navy:#0f2a4a;
+    --navy-2:#173a63;
+    --teal:#0d7377;
+    --teal-2:#14a3a8;
+    --paper:#f6f5f1;
+    --line:#e2e6eb;
+    --ink:#1c2733;
+  }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:var(--paper); color:var(--ink); }
+  .brand-gradient{ background:linear-gradient(120deg,var(--navy) 0%,var(--navy-2) 55%,var(--teal) 130%); }
+  .step-num{
+    flex-shrink:0; width:30px; height:30px; border-radius:9999px;
+    background:var(--navy); color:#fff; font-weight:800; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .toc-link{ display:block; padding:7px 12px; border-radius:8px; color:#475569; font-size:13.5px; }
+  .toc-link:hover{ background:#eef1f5; color:var(--navy); }
+  .toc-link.active{ background:var(--navy); color:#fff; font-weight:600; }
+  .flow-arrow{ color:var(--teal); font-weight:700; }
+  details > summary{ cursor:pointer; list-style:none; }
+  details > summary::-webkit-details-marker{ display:none; }
+  details[open] .chev{ transform:rotate(90deg); }
+  .chev{ transition:transform .15s ease; }
+  @media print{
+    #toc, #topbar, #fabTop{ display:none !important; }
+    body{ background:#fff; }
+    section{ break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<header id="topbar" class="brand-gradient text-white sticky top-0 z-30 shadow-md">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+    <div class="w-10 h-10 rounded-lg bg-white/15 flex items-center justify-center overflow-hidden shrink-0">
+      <img src="https://i.ibb.co.com/Zz9dbRD/logosmp13.png" alt="Logo SMPN 13" class="w-full h-full object-contain p-1">
+    </div>
+    <div class="min-w-0">
+      <div class="font-bold leading-tight truncate">Panduan Aplikasi Absensi Siswa Online</div>
+      <div class="text-xs text-white/70 leading-tight truncate">SMP Negeri 13 Bandar Lampung</div>
+    </div>
+    <a href="https://absen-siswa-2026.netlify.app" target="_blank" rel="noopener"
+       class="ml-auto shrink-0 bg-white text-[var(--navy)] text-sm font-semibold px-3 py-2 rounded-lg hover:bg-white/90 whitespace-nowrap">
+      Buka Aplikasi &rarr;
+    </a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<div class="max-w-6xl mx-auto px-4 pt-8 pb-4">
+  <p class="text-xs font-bold tracking-wider text-[var(--teal)] uppercase mb-2">Untuk Bapak/Ibu Guru</p>
+  <h1 class="text-2xl sm:text-3xl font-extrabold text-[var(--navy)] leading-tight max-w-2xl">
+    Catat kehadiran siswa dari HP atau laptop, tanpa buku absen manual.
+  </h1>
+  <p class="text-slate-600 mt-3 max-w-2xl text-[15px]">
+    Panduan ini menuntun langkah demi langkah &mdash; dari membuka aplikasi pertama kali sampai mencetak rekap absensi.
+    Tidak perlu jago komputer, cukup ikuti urutannya.
+  </p>
+</div>
+
+<div class="max-w-6xl mx-auto px-4 pb-16 flex gap-8 items-start">
+
+  <!-- ===== TOC (desktop sidebar) ===== -->
+  <nav id="toc" class="hidden lg:block w-56 shrink-0 sticky top-20 self-start bg-white border border-[var(--line)] rounded-xl p-3">
+    <div class="text-xs font-bold text-slate-400 uppercase px-2 mb-1">Daftar Isi</div>
+    <a href="#tentang" class="toc-link">Tentang Aplikasi</a>
+    <a href="#buka" class="toc-link">Cara Membuka</a>
+    <a href="#login" class="toc-link">Pilih Nama Guru</a>
+    <a href="#kelas" class="toc-link">Membuat Kelas</a>
+    <a href="#siswa" class="toc-link">Mengisi Data Siswa</a>
+    <a href="#absensi" class="toc-link">Menandai Kehadiran</a>
+    <a href="#cetak" class="toc-link">Cetak / Simpan PDF</a>
+    <a href="#faq" class="toc-link">Tanya Jawab</a>
+    <a href="#bantuan" class="toc-link">Bantuan</a>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="flex-1 min-w-0 space-y-6">
+
+    <!-- 1. TENTANG -->
+    <section id="tentang" class="bg-white border border-[var(--line)] rounded-2xl p-6 scroll-mt-20">
+      <h2 class="text-xl font-bold text-[var(--navy)] mb-3">1. Tentang Aplikasi Ini</h2>
+      <p class="text-[15px] leading-relaxed text-slate-700">
+        Aplikasi Absensi Siswa Online membantu mencatat kehadiran siswa setiap kali mengajar &mdash; langsung dari HP
+        atau laptop. Semua data tersimpan otomatis secara online, jadi aman dan bisa dibuka kapan saja dari perangkat mana saja.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-3 mt-4">
+        <div class="flex gap-3 bg-slate-50 rounded-xl p-3.5">
+          <span class="text-xl">📋</span>
+          <div class="text-sm text-slate-700">Buat daftar siswa per kelas yang diajar</div>
+        </div>
+        <div class="flex gap-3 bg-slate-50 rounded-xl p-3.5">
+          <span class="text-xl">✔️</span>
+          <div class="text-sm text-slate-700">Tandai Hadir / Sakit / Izin / Alpa dengan mudah lewat HP</div>
+        </div>
+        <div class="flex gap-3 bg-slate-50 rounded-xl p-3.5">
+          <span class="text-xl">🖨️</span>
+          <div class="text-sm text-slate-700">Cetak atau simpan rekap absensi dalam bentuk PDF</div>
+        </div>
+        <div class="flex gap-3 bg-slate-50 rounded-xl p-3.5">
+          <span class="text-xl">🔒</span>
+          <div class="text-sm text-slate-700">Setiap guru hanya melihat kelasnya sendiri</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. CARA MEMBUKA -->
+    <section id="buka" class="bg-white border border-[var(--line)] rounded-2xl p-6 scroll-mt-20">
+      <h2 class="text-xl font-bold text-[var(--navy)] mb-4">2. Cara Membuka Aplikasi</h2>
+      <ol class="space-y-4">
+        <li class="flex gap-3">
+          <span class="step-num">1</span>
+          <div class="pt-0.5 text-[15px] text-slate-700">Buka browser di HP atau laptop <span class="text-slate-400">(disarankan Google Chrome)</span></div>
+        </li>
+        <li class="flex gap-3">
+          <span class="step-num">2</span>
+          <div class="pt-0.5 text-[15px] text-slate-700">
+            Kunjungi alamat berikut:
+            <div class="mt-2">
+              <a href="https://absen-siswa-2026.netlify.app" target="_blank" rel="noopener"
+                 class="inline-block bg-[var(--navy)] text-white font-semibold text-sm px-4 py-2.5 rounded-lg hover:opacity-90">
+                absen-siswa-2026.netlify.app &rarr;
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="flex gap-3">
+          <span class="step-num">3</span>
+          <div class="pt-0.5 text-[15px] text-slate-700">Simpan alamat ini supaya mudah dibuka lagi &mdash; di HP, bisa ditambahkan ke Layar Utama agar terasa seperti aplikasi biasa.</div>
+        </li>
+      </ol>
+      <div class="mt-5 border border-[var(--teal)]/30 bg-[#f0fbfa] rounded-xl p-4">
+        <div class="font-bold text-[var(--teal)] text-sm mb-2">💡 Tips menambahkan ke Layar Utama</div>
+        <ul class="text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+          <li><b>Chrome (Android):</b> buka alamat di atas &rarr; titik tiga (⋮) pojok kanan atas &rarr; "Tambahkan ke layar Utama"</li>
+          <li><b>Safari (iPhone):</b> buka alamat di atas &rarr; tombol Share (kotak + panah ke atas) &rarr; "Tambah ke Layar Utama"</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. LOGIN -->
+    <section id="login" class="bg-white border border-[var(--line)] rounded-2xl p-6 scroll-mt-20">
+      <h2 class="text-xl font-bold text-[var(--navy)] mb-2">3. Memilih Nama Guru</h2>
+      <p class="text-[15px] text-slate-700 mb-4">Saat pertama kali dibuka, akan muncul layar <b>"Pilih Nama Anda"</b>. Ini bukan login pakai kata sandi &mdash; cukup pilih nama saja.</p>
+      <ol class="space-y-4">
+        <li class="flex gap-3"><span class="step-num">1</span><div class="pt-0.5 text-[15px] text-slate-700">Ketik sebagian nama Bapak/Ibu di kotak pencarian</div></li>
+        <li class="flex gap-3"><span class="step-num">2</span><div class="pt-0.5 text-[15px] text-slate-700">Tap nama yang muncul dari daftar</div></li>
+        <li class="flex gap-3"><span class="step-num">3</span><div class="pt-0.5 text-[15px] text-slate-700">Selesai &mdash; aplikasi akan mengingat pilihan ini di perangkat tersebut</div></li>
+      </ol>
+      <div class="mt-5 border border-amber-300/50 bg-amber-50 rounded-xl p-4">
+        <div class="font-bold text-amber-700 text-sm mb-1.5">⚠️ Kalau HP/laptop dipakai bergantian</div>
+        <p class="text-sm text-slate-700">Klik tombol <b>"Ganti Guru"</b> di pojok kanan atas untuk beralih ke nama guru lain. Setiap guru hanya melihat kelas miliknya sendiri.</p>
+      </div>
+    </section>
+
+    <!-- 4. KELAS -->
+    <section id="kelas" class="bg-white border border-[var(--line)] rounded-2xl p-6 scroll-mt-20">
+      <h2 class="text-xl font-bold text-[var(--navy)] mb-2">4. Membuat Kelas Baru</h2>
+      <p class="text-[15px] text-slate-700 mb-4">Setiap mata pelajaran &amp; kelas yang diajar dibuat sekali saja sebagai "Kelas".</p>
+      <ol class="space-y-4">
+        <li class="flex gap-3"><span class="step-num">1</span><div class="pt-0.5 text-[15px] text-slate-700">Klik tombol <b>"+ Kelas Baru"</b> di pojok kanan atas</div></li>
+        <li class="flex gap-3"><span class="step-num">2</span><div class="pt-0.5 text-[15px] text-slate-700">Pilih <b>Kelas</b> dari dropdown (atau "Lainnya" untuk ketik manual)</div></li>
+        <li class="flex gap-3"><span class="step-num">3</span><div class="pt-0.5 text-[15px] text-slate-700">Pilih <b>Mata Pelajaran</b> dari dropdown</div></li>
+        <li class="flex gap-3"><span class="step-num">4</span><div class="pt-0.5 text-[15px] text-slate-700">Pilih <b>Semester</b> dan isi <b>Tahun Pelajaran</b></div></li>
+        <li class="flex gap-3"><span class="step-num">5</span><div class="pt-0.5 text-[15px] text-slate-700">Klik <b>"Simpan"</b> &mdash; nama guru &amp; NIP otomatis terisi, tidak perlu diketik</div></li>
+      </ol>
+    </section>
+
+    <!-- 5. SISWA -->
+    <section id="siswa" class="bg-white border border-[var(--line)] rounded-2xl p-6 scroll-mt-20">
+      <h2 class="text-xl font-bold text-[var(--navy)] mb-2">5. Mengisi Data Siswa</h2>
+      <p class="text-[15px] text-slate-700 mb-4">Klik tab <b>"1. Data Siswa"</b> di kelas yang sedang dipilih.</p>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border border-[var(--line)] rounded-xl p-4">
+          <div class="font-bold text-[var(--navy)] text-sm mb-3">📥 Cara 1: Salin dari Excel <span class="text-[var(--teal)] font-normal">(disarankan)</span></div>
+          <ol class="space-y-2.5 text-sm text-slate-700">
+            <li><b>1.</b> Buka file Excel (kolom NIS, Nama, L/P)</li>
+            <li><b>2.</b> Blok data (tanpa judul kolom), tekan Ctrl+C</li>
+            <li><b>3.</b> Klik tombol "Impor dari Excel"</li>
+            <li><b>4.</b> Tempel (Ctrl+V), klik "Impor"</li>
+            <li><b>5.</b> Klik "Simpan"</li>
+          </ol>
+        </div>
+        <div class="border border-[var(--line)] rounded-xl p-4">
+          <div class="font-bold text-[var(--navy)] text-sm mb-3">✍️ Cara 2: Isi Manual</div>
+          <ol class="space-y-2.5 text-sm text-slate-700">
+            <li><b>1.</b> Klik "+ Tambah Baris"</li>
+            <li><b>2.</b> Isi NIS, Nama, pilih L/P</li>
+            <li><b>3.</b> Ulangi untuk tiap siswa</li>
+            <li><b>4.</b> Klik "Simpan"</li>
+          </ol>
+        </div>
+      </div>
+      <div class="mt-4 border border-rose-300/50 bg-rose-50 rounded-xl p-4">
+        <div class="font-bold text-rose-700 text-sm mb-1.5">❗ Penting</div>
+        <p class="text-sm text-slate-700">Selalu klik tombol <b>"Simpan"</b> setelah mengubah data siswa &mdash; kalau tidak, perubahan tidak tersimpan. Tanda <b>"X"</b> di ujung baris digunakan untuk menghapus siswa.</p>
+      </div>
+    </section>
+
+    <!-- 6. ABSENSI -->
+    <section id="absensi" class="bg-white border border-[var(--line)] rounded-2xl p-6 scroll-mt-20">
+      <h2 class="text-xl font-bold text-[var(--navy)] mb-2">6. Menandai Kehadiran</h2>
+      <p class="text-[15px] text-slate-700 mb-4">Klik tab <b>"2. Absensi"</b> setiap kali selesai mengajar.</p>
+
+      <div class="font-bold text-[var(--navy)] text-sm mb-2">Langkah 1 &mdash; Tambah Pertemuan</div>
+      <ol class="space-y-3 mb-5">
+        <li class="flex gap-3"><span class="step-num">1</span><div class="pt-0.5 text-[15px] text-slate-700">Pilih tanggal hari ini pada kotak "Tambah Pertemuan"</div></li>
+        <li class="flex gap-3"><span class="step-num">2</span><div class="pt-0.5 text-[15px] text-slate-700">Klik "+ Tambah" &mdash; kolom pertemuan baru otomatis muncul</div></li>
+      </ol>
+
+      <div class="font-bold text-[var(--navy)] text-sm mb-2">Langkah 2 &mdash; Tandai siswa</div>
+      <div class="grid sm:grid-cols-2 gap-3 mb-4">
+        <div class="bg-slate-50 rounded-xl p-4">
+          <div class="font-semibold text-sm text-slate-800 mb-1">Tandai Satu-Satu <span class="text-slate-400 font-normal">(disarankan, terutama di HP)</span></div>
+          <p class="text-sm text-slate-600">Pilih pertemuan dari dropdown, lalu tap tombol besar untuk tiap siswa satu per satu.</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-4">
+          <div class="font-semibold text-sm text-slate-800 mb-1">Tabel Lengkap</div>
+          <p class="text-sm text-slate-600">Semua siswa &amp; semua tanggal dalam satu tabel &mdash; cocok untuk melihat rekap sekaligus.</p>
+        </div>
+      </div>
+
+      <p class="text-sm text-slate-600 mb-2">Setiap kali diklik/tap, status berganti berurutan:</p>
+      <div class="flex flex-wrap items-center gap-2 bg-[var(--navy)]/5 rounded-xl p-4 font-semibold text-sm">
+        <span class="bg-white border border-slate-300 rounded-lg px-3 py-1.5">kosong (Hadir)</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="bg-amber-100 text-amber-700 rounded-lg px-3 py-1.5">S (Sakit)</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="bg-blue-100 text-blue-700 rounded-lg px-3 py-1.5">I (Izin)</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="bg-rose-100 text-rose-700 rounded-lg px-3 py-1.5">A (Alpa)</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="text-slate-400">kembali kosong</span>
+      </div>
+
+      <div class="mt-4 border border-[var(--teal)]/30 bg-[#f0fbfa] rounded-xl p-4 space-y-1.5 text-sm text-slate-700">
+        <p>✔️ Siswa yang <b>tidak</b> ditandai otomatis dianggap <b>Hadir</b> &mdash; tidak perlu ditandai satu-satu.</p>
+        <p>✔️ Perubahan tersimpan otomatis ke server &plusmn;1 detik setelah berhenti mengklik.</p>
+        <p>✔️ Kolom S/I/A/Jumlah di kanan tabel terisi otomatis.</p>
+      </div>
+    </section>
+
+    <!-- 7. CETAK -->
+    <section id="cetak" class="bg-white border border-[var(--line)] rounded-2xl p-6 scroll-mt-20">
+      <h2 class="text-xl font-bold text-[var(--navy)] mb-2">7. Mencetak / Menyimpan PDF</h2>
+      <p class="text-[15px] text-slate-700 mb-4">Klik tab <b>"3. Cetak PDF"</b>, lengkapi info yang diperlukan, lalu klik tombol <b>"Buat &amp; Cetak / Simpan PDF"</b>.</p>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border border-[var(--line)] rounded-xl p-4">
+          <div class="font-bold text-[var(--navy)] text-sm mb-3">⬇️ Untuk menyimpan sebagai file PDF</div>
+          <ol class="space-y-2.5 text-sm text-slate-700">
+            <li><b>1.</b> Pada kotak dialog, klik dropdown "Destination"</li>
+            <li><b>2.</b> Pilih "Save as PDF"</li>
+            <li><b>3.</b> Pastikan kertas Legal/F4, orientasi Potrait</li>
+            <li><b>4.</b> Klik "Save", pilih folder simpan</li>
+          </ol>
+        </div>
+        <div class="border border-[var(--line)] rounded-xl p-4">
+          <div class="font-bold text-[var(--navy)] text-sm mb-3">🖨️ Untuk cetak langsung ke printer</div>
+          <ol class="space-y-2.5 text-sm text-slate-700">
+            <li><b>1.</b> Pilih nama printer di "Destination"</li>
+            <li><b>2.</b> Pastikan kertas Legal/F4</li>
+            <li><b>3.</b> Klik "Print"</li>
+          </ol>
+        </div>
+      </div>
+      <p class="text-sm text-slate-500 mt-4">💡 Jumlah kolom pertemuan per halaman bisa diatur (maksimal 10) supaya tulisan tidak terlalu kecil. Kalau pertemuan sudah banyak, hasil cetak otomatis terbagi ke beberapa halaman.</p>
+    </section>
+
+    <!-- 8. FAQ -->
+    <section id="faq" class="bg-white border border-[var(--line)] rounded-2xl p-6 scroll-mt-20">
+      <h2 class="text-xl font-bold text-[var(--navy)] mb-4">8. Tanya Jawab</h2>
+      <div class="divide-y divide-[var(--line)]">
+        <details class="py-3" open>
+          <summary class="flex items-center justify-between font-semibold text-slate-800 text-[15px]">
+            Apakah data saya bisa dilihat/diubah guru lain?
+            <span class="chev text-slate-400">&#9656;</span>
+          </summary>
+          <p class="text-sm text-slate-600 mt-2 pr-6">Tidak. Setiap guru hanya bisa melihat dan mengubah kelas miliknya sendiri, sesuai nama yang dipilih saat login.</p>
+        </details>
+        <details class="py-3">
+          <summary class="flex items-center justify-between font-semibold text-slate-800 text-[15px]">
+            Bagaimana kalau salah pilih nama guru?
+            <span class="chev text-slate-400">&#9656;</span>
+          </summary>
+          <p class="text-sm text-slate-600 mt-2 pr-6">Klik tombol "Ganti Guru" di pojok kanan atas, lalu pilih nama yang benar.</p>
+        </details>
+        <details class="py-3">
+          <summary class="flex items-center justify-between font-semibold text-slate-800 text-[15px]">
+            Bagaimana kalau ada siswa pindah/keluar?
+            <span class="chev text-slate-400">&#9656;</span>
+          </summary>
+          <p class="text-sm text-slate-600 mt-2 pr-6">Buka tab "1. Data Siswa", klik tanda "X" pada baris siswa tersebut, lalu klik "Simpan".</p>
+        </details>
+        <details class="py-3">
+          <summary class="flex items-center justify-between font-semibold text-slate-800 text-[15px]">
+            Bagaimana kalau salah menandai kehadiran?
+            <span class="chev text-slate-400">&#9656;</span>
+          </summary>
+          <p class="text-sm text-slate-600 mt-2 pr-6">Klik/tap lagi status siswa tersebut sampai kembali ke status yang benar (kosong/S/I/A).</p>
+        </details>
+        <details class="py-3">
+          <summary class="flex items-center justify-between font-semibold text-slate-800 text-[15px]">
+            Apakah bisa dipakai di banyak HP/laptop sekaligus?
+            <span class="chev text-slate-400">&#9656;</span>
+          </summary>
+          <p class="text-sm text-slate-600 mt-2 pr-6">Bisa. Karena data tersimpan online, guru bisa membuka dan melanjutkan pekerjaan dari perangkat mana saja, asal sudah memilih nama guru yang sama.</p>
+        </details>
+        <details class="py-3">
+          <summary class="flex items-center justify-between font-semibold text-slate-800 text-[15px]">
+            Aplikasi lambat atau tidak merespon?
+            <span class="chev text-slate-400">&#9656;</span>
+          </summary>
+          <p class="text-sm text-slate-600 mt-2 pr-6">Pastikan koneksi internet stabil. Coba tutup dan buka kembali aplikasinya, atau refresh halaman.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- 9. BANTUAN -->
+    <section id="bantuan" class="bg-white border border-[var(--line)] rounded-2xl p-6 scroll-mt-20">
+      <h2 class="text-xl font-bold text-[var(--navy)] mb-2">9. Bantuan</h2>
+      <p class="text-[15px] text-slate-700 mb-3">Jika mengalami kendala yang tidak tercantum dalam panduan ini, silakan hubungi:</p>
+      <div class="flex items-center gap-3 bg-slate-50 rounded-xl p-4">
+        <div class="w-11 h-11 rounded-full bg-[var(--navy)] text-white flex items-center justify-center font-bold">MS</div>
+        <div>
+          <div class="font-bold text-slate-800">Sentot Hardiono, S.Pd <span class="text-slate-400 font-normal">(Mr.Sent2026)</span></div>
+          <div class="text-sm text-slate-500">Guru IPA &mdash; Penanggung jawab sistem digital SMPN 13 Bandar Lampung</div>
+        </div>
+      </div>
+    </section>
+
+    <p class="text-center text-xs text-slate-400 pt-2 pb-6">
+      Panduan ini dibuat untuk memudahkan seluruh guru SMP Negeri 13 Bandar Lampung. &middot; Dibuat oleh <b>Mr.Sent2026</b>
+    </p>
+
+  </main>
+</div>
+
+<!-- back to top -->
+<a id="fabTop" href="#topbar" class="fixed bottom-5 right-5 w-11 h-11 rounded-full bg-[var(--navy)] text-white flex items-center justify-center shadow-lg hover:opacity-90 text-lg">&uarr;</a>
+
+<script>
+  // highlight active TOC link on scroll
+  const sections = document.querySelectorAll('main section[id]');
+  const links = document.querySelectorAll('.toc-link');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.remove('active'));
+        const link = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+        if(link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
